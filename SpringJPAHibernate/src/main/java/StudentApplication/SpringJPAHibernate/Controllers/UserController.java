@@ -48,7 +48,25 @@ public class UserController {
             System.out.println("User Id is not found : " + id);
         }
         return userRepoObj.findById(id).get();
+    };
+
+    @GetMapping("/deletebyid/{id}")
+    public void deletebyid(@PathVariable int id) {
+        System.out.println("User having id : " + id + " is deleted.");
+        userRepoObj.deleteById(id);
     }
+    @GetMapping("/existbyid/{id}")
+    public boolean existsId(@PathVariable int id) {
+        boolean result = userRepoObj.existsById(id);
+        if(result) {
+            System.out.println("User with id : " + id + " is existing.");
+        }
+        else{
+            System.out.println("User with id : " + id + " is not existing.");
+        }
+        return result;
+    };
+
 
 }
 
