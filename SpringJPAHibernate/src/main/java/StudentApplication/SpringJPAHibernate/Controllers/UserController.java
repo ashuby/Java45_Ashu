@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -37,6 +38,16 @@ public class UserController {
     @GetMapping("/")
     public String index() {
         return "Hello!!!";
+    };
+
+    @GetMapping("/findbyId/{id}")
+    public User findByUserId(@PathVariable int id) {
+        //Optional class for null pointer exception
+        Optional<User> tempObj = userRepoObj.findById(id);
+        if(tempObj.isEmpty()) {
+            System.out.println("User Id is not found : " + id);
+        }
+        return userRepoObj.findById(id).get();
     }
 
 }
