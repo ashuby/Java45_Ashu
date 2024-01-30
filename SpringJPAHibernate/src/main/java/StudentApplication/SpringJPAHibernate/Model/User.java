@@ -23,7 +23,9 @@ public class User  {
     @Column(name = "job")
     private String profession;
 
+    @Column(name = "age")
     private int age;
 
+    @Column(name = "work")
     private boolean work;
 }
