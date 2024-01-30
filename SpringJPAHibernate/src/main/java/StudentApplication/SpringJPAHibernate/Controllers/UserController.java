@@ -20,14 +20,14 @@ public class UserController {
         return userResponse;
     };
 
-    @PostMapping("/del")
+    @DeleteMapping("/del")
     public void delete(@RequestBody User userObj1 ) {
         System.out.println(userObj1);
 
         userRepoObj.delete(userObj1);
     };
 
-    @PostMapping("/find")
+    @GetMapping("/find")
     public List<User> findAll() {
 
         List<User> userResponse = userRepoObj.findAll();
