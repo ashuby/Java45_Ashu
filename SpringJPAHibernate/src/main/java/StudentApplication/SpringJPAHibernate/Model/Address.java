@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @Table(name = "address")
 public class Address {
     public int getId() {
-        return id;
+        return addressId;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.addressId = id;
     }
 
     public String getStreetAddress() {
@@ -59,7 +59,7 @@ public class Address {
     @Override
     public String toString() {
         return "Address{" +
-                "id=" + id +
+                "id=" + addressId +
                 ", streetAddress='" + streetAddress + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
@@ -69,8 +69,8 @@ public class Address {
     }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private int id;
+    private int addressId;
+
 
     @Column(name = "streetAddress")
     private String streetAddress;
@@ -86,6 +86,18 @@ public class Address {
 
     @Column(name = "postalCode")
     private String postalCode;
+
+    public Address() {
+    }
+
+    public Address(int addressId, String streetAddress, String city, String state, String country, String postalCode) {
+        this.addressId = addressId;
+        this.streetAddress = streetAddress;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+        this.postalCode = postalCode;
+    }
 //    private Employee employee;
 
 }
